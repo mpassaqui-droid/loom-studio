@@ -1,0 +1,38 @@
+# ================================================================
+#  LOOM — « NOUVEAUTÉS » : tout ce qu'on a ajouté, en action.
+#  (Tu peux maintenant commenter EN FIN DE LIGNE — un # précédé d'un espace.)
+#
+#  ▶ Pendant que ça joue, essaie les NOUVEAUTÉS DE L'APP :
+#    • ❓ explique  -> tonalité, tradition, CADENCE, ACOUSTIQUE (consonance), NOUVEAUTÉ.
+#    • ✨ développe -> fait évoluer tout le morceau d'un clic (↩ annuler).
+#    • boîte VIBE  -> tape  ?sieve   ?pythagore   ?raga   ?ii-v-i
+# ================================================================
+
+title:  Nouveautés
+key:    c minor
+tune:   just            # intonation JUSTE (ratios purs) : plus consonant que 'equal'
+bpm:    104
+feel:   22
+scene:  gaurora
+song:   a*4 b*4         # 2 sections : 'develop' continue d'évoluer partout
+
+kick:   tresillo                              # RYTHME DU MONDE : 3-3-2 cubain
+hat:    bembe | gain 0.12 | swing 56          # cloche africaine (12) -> déphase contre le kick
+clap:   son | gain 0.3 | in b                 # clave son 3-2 (section b)
+
+perc:   sieve(16,3:0,5:2) | crush 5 | pan -0.3 | gain 0.12   # SIEVE de Xenakis (théorie des nombres)
+
+lead:   arc(8) | pluck 0.7 | reverb 0.5 | delay 0.3 | gate 0.6 | gain 0.13 | hue 200  # CONTOUR : arche qui résout
+bass:   fall(8) | saw | oct 2 | lp 700 q 5 | gain 0.15        # descente qui résout sur la tonique
+
+glass:  pink(16) | sine | fm 1 1.5 | reverb 0.5 | echo 8 0.4 | gate 0.5 | gain 0.09 | hue 280  # BRUIT ROSE 1/f (naturel)
+
+theme:  1 3 5 1' 5 3 | develop | bell | detune 4 | reverb 0.6 | gain 0.1 | hue 60  # DEVELOP : se transforme chaque mesure
+
+ph1@b:  1 4 5 3 | poly 12 | sine | reverb 0.4 | pan -0.35 | gate 0.5 | gain 0.06   # PHASING Reich : poly 12
+ph2@b:  1 4 5 3 | poly 13 | sine | reverb 0.4 | pan 0.35 | gate 0.5 | gain 0.06    # contre poly 13 -> se déphasent
+
+drone:  1 . . . . . . . | saw | partials 1 0 0.5 0 0.3 | unison 3 | detune 8 | lp 900 | reverb 0.7 | gate 4 | gain 0.05  # ADDITIF (timbre inventé)
+
+# À essayer : pink(16) vs walk(16) vs perlin(16) · arc(8) vs rise(8) vs fall(8)
+# Microtonal : remplace la ligne key: par une gamme en quarts de ton.
