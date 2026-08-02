@@ -1,0 +1,205 @@
+# ================================================================
+#  LOOM · "LES DIX": an electronic opera
+#
+#  Ten movements, ten questions that held mathematics in check.
+#  No movement illustrates its problem: each one is SUBJECT to it.
+#  The form comes from the theorem, not the other way round.
+#
+#  I    THE IRRATIONAL    root 2 is the ratio of no two integers
+#  II   THE CIRCLE        pi is transcendental, the cycle never closes
+#  III  THE SYMMETRY      Galois: the quintic has no formula
+#  IV   THE SEVEN BRIDGES Euler: that walk does not exist
+#  V    THE MARGIN        Fermat: 358 years before the answer
+#  VI   THE CONTINUUM     Cantor: how many infinities are there?
+#  VII  INCOMPLETENESS    Godel: the true outruns the provable
+#  VIII THE HALT          Turing: does it stop? you cannot know
+#  IX   THE PRIMES        Riemann, open since 1859
+#  X    SEARCH, VERIFY    P vs NP, open since 1971
+#
+#  The last two are still open. So the opera does not resolve: it
+#  returns to the drone it began on. The circle does not close.
+#
+#  tune: pyth. The whole work is tuned the Pythagorean way, after the
+#  very school that broke on root 2. The thirds are harsh. That is the
+#  subject, not a mistake.
+#
+#  ==> Hit RUN, then SCENE for full screen.
+#      The visuals change with every movement: the spiral of fifths, the
+#      graph of Euler's bridges, Cantor's fractal, Godel's attractor.
+#      That is where the opera is watched as much as heard.
+# ================================================================
+
+title:  Les Dix
+bpm:    96
+tune:   pyth
+feel:   18
+seed:   1859
+warmth: 0.4
+duck:   18
+film:   wide
+
+song:   irrational*8 circle*8 symmetry*8 bridges*8 margin*10 continuum*8 godel*8 halt*8 primes*10 search*10 irrational*4
+
+tempo:  irrational 96 circle 104 symmetry 112 bridges 126 margin 84 continuum 100 godel 108 halt 138 primes 92 search 120
+
+key:              a minor
+key@circle:       a lydian
+key@symmetry:     a whole_tone
+key@bridges:      a dorian
+key@margin:       a phrygian
+key@continuum:    a minpent
+key@godel:        a locrian
+key@halt:         a chromatic
+key@primes:       a harmonic_minor
+key@search:       a minor
+
+scene:            spiral
+scene@circle:     rose
+scene@symmetry:   kaleido
+scene@bridges:    network
+scene@margin:     moire
+scene@continuum:  mandelbrot
+scene@godel:      clifford
+scene@halt:       matrix
+scene@primes:     harmono
+scene@search:     starfield
+
+# ================================================================
+#  THE CHORUS, present from end to end. This is the opera speaking.
+#  A drone on the tonic and the fifth: the only two intervals the
+#  Pythagoreans held to be perfect.
+# ================================================================
+chorus:   1 _ _ _ _ _ _ _ ; 5 _ _ _ _ _ _ _ | sine | vowel a | unison 3 | detune 6 | env 1.2 0.4 0.85 2.4 | lp 1800 | reverb 0.6 | gain 0.1 | hue 220
+
+# ================================================================
+#  I · THE IRRATIONAL
+#  Hippasus shows that root 2 is the ratio of no pair of integers.
+#  Legend says he died at sea for saying so.
+#  Here: fifths stack up and never land back on the octave. That gap
+#  is the Pythagorean comma, audible, and nothing closes it.
+# ================================================================
+fifths@irrational:  1 . . . 5 . . . 2' . . . 6' . . . | bow | oct 3 | slide 0.12 | reverb 0.5 | gain 0.13 | hue 200
+comma@irrational:   . . . . . . . 1+23 . . . . . . . 1-23 | sine | env 0.4 0.6 0.4 1.6 | gain 0.09 | pan 0.4 | hue 340
+bell@irrational:    1 . . . . . . . | bell | oct 4 | reverb 0.55 | gain 0.11 | hue 40
+breath@irrational:  x . . . . . x . | sample breath | gain 0.14 | pan -0.3 | hue 180
+
+# ================================================================
+#  II · THE CIRCLE
+#  Lindemann, 1882: pi is transcendental, so squaring the circle with
+#  straightedge and compass is impossible. Two thousand years of trying.
+#  Here: the melody IS the digits of pi. Two voices cycle at 22 and 7
+#  steps (22/7, the old approximation) and drift apart forever.
+# ================================================================
+digits@circle:      pi(16) | pluck 0.6 | oct 4 | gain 0.12 | reverb 0.35 | hue 60
+twentytwo@circle:   1 3 5 3 | poly 22 | sine | fm 1 2 | gain 0.09 | pan -0.4 | hue 20
+seven@circle:       1 5 | poly 7 | tri | gain 0.09 | pan 0.4 | hue 300
+pulse@circle:       x . . . . . . . x . . . . . . . | sample bd | gain 0.34 | hue 0
+
+# ================================================================
+#  III · THE SYMMETRY
+#  Abel then Galois: past degree four there is no formula by radicals.
+#  The reason is not the arithmetic, it is the STRUCTURE of the group
+#  of permutations of the roots.
+#  Here: one cell of five notes, and nothing but its permutations.
+# ================================================================
+roots@symmetry:     1 2 3 4 5 | pluck 0.5 | oct 4 | gain 0.13 | hue 120
+permute@symmetry:   1 2 3 4 5 | rot 2 | iter 1 | pulse | lp 2400 | gain 0.1 | pan 0.5 | hue 160
+mirror@symmetry:    1 2 3 4 5 | invert | jux rev | sine | gain 0.09 | pan -0.5 | hue 280
+unsolvable@symmetry: . . . . x | sample metal | gain 0.16 | reverb 0.4 | hue 0
+low@symmetry:       1 . . . . | saw | oct 2 | lp 500 q 6 | sub 0.4 | gain 0.14 | hue 340
+
+# ================================================================
+#  IV · THE SEVEN BRIDGES
+#  Konigsberg, 1736: can you cross the seven bridges once each and only
+#  once? Euler answers no, and invents graph theory on the way. The
+#  answer turns on the degree of the vertices, not on trying harder.
+# ================================================================
+bridges@bridges:  e(7,16) | sample wood | gain 0.2 | hue 30
+walk@bridges:     walk(8) | reed | oct 3 | gain 0.12 | reverb 0.3 | hue 200
+banks@bridges:    x . . . x . . x . . x . . . x . | sample rim | gain 0.15 | pan 0.3 | hue 90
+odd@bridges:      . . x . . . . . . . . . x . . . | sample cp | gain 0.18 | hue 350
+bass@bridges:     1 . 5, . 1 . 4, . | saw | oct 2 | slide | lp 700 q 5 | drive 0.25 | gain 0.15 | hue 340
+
+# ================================================================
+#  V · THE MARGIN
+#  "I have discovered a truly marvellous proof of this, which this
+#  margin is too narrow to contain." Fermat, 1637.
+#  Wiles closes it in 1994. Three hundred and fifty-eight years later.
+#  Here: three voices (x, y, z) reach for an agreement they only get
+#  at the very end of the movement.
+# ================================================================
+x@margin:       1 _ _ _ 1 _ _ _ | bow | oct 3 | gain 0.12 | reverb 0.45 | hue 10
+y@margin:       4 _ _ _ 4 _ _ _ | bow | oct 3 | gain 0.11 | pan -0.4 | reverb 0.45 | hue 140
+z@margin:       7b _ _ _ 7b _ _ _ | bow | oct 3 | gain 0.11 | pan 0.4 | reverb 0.45 | hue 260
+margin@margin:  . . . . . . . x | sample glass | gain 0.13 | reverb 0.6 | hue 50
+waiting@margin: 1 . . . . . . . | sine | oct 2 | env 2 1 0.7 3 | gain 0.12 | hue 220
+
+# ================================================================
+#  VI · THE CONTINUUM
+#  Cantor: the infinity of the reals is strictly larger than that of the
+#  integers. Is there an infinity in between? Godel and Cohen answered:
+#  the question is undecidable in ZFC. Neither true nor false.
+#  Here: the fractal rhythm of the Cantor set, and a density that keeps
+#  doubling without ever filling.
+# ================================================================
+dust@continuum:      cantor(16) | sample hh | gain 0.15 | pan 0.2 | hue 190
+diagonal@continuum:  1 2 4 8' | every 2 fast 2 | pluck 0.4 | oct 4 | gain 0.11 | hue 300
+thirds@continuum:    x . . x . . x . . x . . x . . x | sample perc | gain 0.13 | hue 60
+countable@continuum: 1 . . . 2 . . . 3 . . . 4 . . . | tri | oct 3 | gain 0.1 | pan -0.35 | hue 210
+continuum@continuum: 1 | sine | oct 2 | lfo pitch 0.13 0.5 | gain 0.13 | reverb 0.5 | hue 20
+
+# ================================================================
+#  VII · INCOMPLETENESS
+#  Godel, 1931: any system rich enough contains a true statement it
+#  cannot prove. The proof builds a sentence that talks about itself.
+#  Here: a macro that calls itself, a canon offset against itself, and
+#  Wolfram's rule 110, which is as powerful as any machine.
+# ================================================================
+def phrase: 1 5 4 7b
+
+statement@godel:   $phrase | pluck 0.55 | oct 4 | gain 0.13 | hue 280
+proof@godel:       $phrase | off 3 | sine | gain 0.09 | pan 0.45 | reverb 0.4 | hue 320
+rule@godel:        ca(110,16) | sample bleep | gain 0.13 | pan -0.4 | hue 160
+strange@godel:     $phrase | rev | reed | oct 3 | gain 0.1 | hue 200
+unprovable@godel:  . . . . . . . . . . . . . . . x | sample metal | gain 0.15 | reverb 0.55 | hue 0
+
+# ================================================================
+#  VIII · THE HALT
+#  Turing, 1936: no program can decide, for every program, whether it
+#  will ever stop. The simplest concrete case fits on one line: the
+#  Collatz sequence. Eighty years of testing, and nobody can prove it
+#  always falls back to 1.
+#  Here: the rhythm IS Collatz. And nothing says it stops.
+# ================================================================
+collatz@halt:   collatz(27) | sample kick909 | gain 0.3 | hue 0
+tape@halt:      x x x x x x x x | sample hh | gain 0.11 | swing 54 | hue 180
+head@halt:      1 . 1 . 1' . 1 . | saw | oct 2 | lp 900 q 8 | fenv 0.6 | drive 0.35 | gain 0.16 | hue 340
+state@halt:     bin(27) | sample bleep | gain 0.12 | pan 0.4 | hue 60
+
+# ================================================================
+#  IX · THE PRIMES
+#  Riemann, 1859. Do all non-trivial zeros of zeta lie on the line of
+#  real part one half? How the primes are spread out depends on the
+#  answer. Open. One million dollars.
+#  Here: the hits land on the prime positions.
+# ================================================================
+primes@primes:   prime(32) | bell | oct 4 | gain 0.13 | reverb 0.45 | hue 50
+zeta@primes:     1 _ _ 5 _ _ 3 _ | bow | oct 3 | gain 0.12 | reverb 0.5 | hue 210
+critical@primes: x . . . . . . . | sample bd | gain 0.26 | hue 0
+gap@primes:      recaman(12) | pluck 0.45 | oct 4 | gain 0.1 | pan -0.4 | hue 300
+drone@primes:    1 ; 5 | sine | oct 2 | env 2 1 0.8 3 | lp 1200 | gain 0.12 | hue 20
+
+# ================================================================
+#  X · SEARCH, VERIFY
+#  P vs NP, 1971. If you can recognise a solution at a glance, can you
+#  also find one quickly? Nobody knows. It is the heaviest open question
+#  in computing.
+#  Here: one voice SEARCHES, at random, for a long time. Another carries
+#  the theme: the moment it lands, you recognise it. Finding is hard.
+#  Verifying is instant. That is the whole problem.
+# ================================================================
+search@search:   walk(16) | pulse | oct 4 | lp 2600 | gain 0.1 | pan -0.45 | hue 190
+verify@search:   1 5 1' 5 | every 4 rot 1 | pluck 0.6 | oct 4 | gain 0.14 | hue 60
+tries@search:    x?70 x?70 x?70 x?70 x?70 x?70 x?70 x?70 | sample hh | gain 0.1 | hue 220
+found@search:    . . . . . . . x | sample cp | gain 0.17 | reverb 0.35 | hue 340
+engine@search:   1 . . 1 . . 1 . | saw | oct 2 | sub 0.5 | lp 800 q 4 | gain 0.15 | hue 0
