@@ -1,0 +1,204 @@
+# ================================================================
+#  LOOM — « LES DIX PROBLÈMES » : un opéra électronique
+#
+#  Dix mouvements, dix questions qui ont tenu les mathématiques en
+#  échec. Chaque mouvement n'illustre pas son problème : il en SUBIT
+#  la contrainte. La forme vient du théorème, pas l'inverse.
+#
+#  I    L'IRRATIONNEL      √2 n'est le rapport d'aucun entier
+#  II   LE CERCLE          π est transcendant, le cycle ne ferme pas
+#  III  LA SYMÉTRIE        Galois : le quintique n'a pas de formule
+#  IV   LES SEPT PONTS     Euler : ce chemin n'existe pas
+#  V    LA MARGE           Fermat : 358 ans avant la réponse
+#  VI   LE CONTINU         Cantor : combien y a-t-il d'infinis ?
+#  VII  L'INCOMPLÉTUDE     Gödel : le vrai déborde le démontrable
+#  VIII L'ARRÊT            Turing : ça s'arrête ? on ne peut pas savoir
+#  IX   LES PREMIERS       Riemann, ouvert depuis 1859
+#  X    CHERCHER, VÉRIFIER P vs NP, ouvert depuis 1971
+#
+#  Les deux derniers sont ouverts à ce jour. L'opéra ne se résout donc
+#  pas : il revient au bourdon du début. Le cercle ne se ferme pas.
+#
+#  tune: pyth — tout l'ouvrage est accordé selon Pythagore, celui-là
+#  même dont l'école a buté sur √2. Les tierces sont dures : c'est le
+#  sujet, pas un défaut.
+#
+#  > RUN. Ouvre SCÈNE pour le plein écran, la scène suit les mouvements.
+# ================================================================
+
+title:  Les dix problèmes
+bpm:    96
+tune:   pyth
+feel:   18
+seed:   1859
+warmth: 0.4
+duck:   18
+film:   wide
+
+song:   irrationnel*8 cercle*8 symetrie*8 ponts*8 marge*10 continu*8 godel*8 arret*8 premiers*10 chercher*10 irrationnel*4
+
+tempo:  irrationnel 96 cercle 104 symetrie 112 ponts 126 marge 84 continu 100 godel 108 arret 138 premiers 92 chercher 120
+
+key:              a minor
+key@cercle:       a lydian
+key@symetrie:     a whole_tone
+key@ponts:        a dorian
+key@marge:        a phrygian
+key@continu:      a minpent
+key@godel:        a locrian
+key@arret:        a chromatic
+key@premiers:     a harmonic_minor
+key@chercher:     a minor
+
+scene:            spiral
+scene@cercle:     rose
+scene@symetrie:   kaleido
+scene@ponts:      network
+scene@marge:      moire
+scene@continu:    mandelbrot
+scene@godel:      clifford
+scene@arret:      matrix
+scene@premiers:   harmono
+scene@chercher:   starfield
+
+# ================================================================
+#  LE CHŒUR — présent d'un bout à l'autre. C'est l'opéra qui parle.
+#  Un bourdon sur la tonique et la quinte : les deux seuls intervalles
+#  que les pythagoriciens tenaient pour parfaits.
+# ================================================================
+choeur:   1 _ _ _ _ _ _ _ ; 5 _ _ _ _ _ _ _ | sine | vowel a | unison 3 | detune 6 | env 1.2 0.4 0.85 2.4 | lp 1800 | reverb 0.6 | gain 0.1 | hue 220
+
+# ================================================================
+#  I — L'IRRATIONNEL
+#  Hippase montre que √2 n'est le rapport d'aucun couple d'entiers.
+#  La légende dit qu'il est mort en mer pour l'avoir dit.
+#  Ici : des quintes s'empilent et ne retombent jamais sur l'octave.
+#  C'est le comma pythagoricien, l'écart audible que rien ne comble.
+# ================================================================
+quintes@irrationnel:  1 . . . 5 . . . 2' . . . 6' . . . | bow | oct 3 | slide 0.12 | reverb 0.5 | gain 0.13 | hue 200
+comma@irrationnel:    . . . . . . . 1+23 . . . . . . . 1-23 | sine | env 0.4 0.6 0.4 1.6 | gain 0.09 | pan 0.4 | hue 340
+cloche@irrationnel:   1 . . . . . . . | bell | oct 4 | reverb 0.55 | gain 0.11 | hue 40
+souffle@irrationnel:  x . . . . . x . | sample breath | gain 0.14 | pan -0.3 | hue 180
+
+# ================================================================
+#  II — LE CERCLE
+#  Lindemann, 1882 : π est transcendant, donc la quadrature du cercle
+#  à la règle et au compas est impossible. Deux mille ans de tentatives.
+#  Ici : la mélodie EST les décimales de π. Deux voix tournent à 22 et
+#  7 pas — 22/7, la vieille approximation — et se déphasent sans fin.
+# ================================================================
+decimales@cercle:  pi(16) | pluck 0.6 | oct 4 | gain 0.12 | reverb 0.35 | hue 60
+vingtdeux@cercle:  1 3 5 3 | poly 22 | sine | fm 1 2 | gain 0.09 | pan -0.4 | hue 20
+sept@cercle:       1 5 | poly 7 | tri | gain 0.09 | pan 0.4 | hue 300
+pouls@cercle:      x . . . . . . . x . . . . . . . | sample bd | gain 0.34 | hue 0
+
+# ================================================================
+#  III — LA SYMÉTRIE
+#  Abel puis Galois : au-delà du degré 4, il n'existe aucune formule
+#  par radicaux. La raison n'est pas le calcul, c'est la STRUCTURE du
+#  groupe des permutations des racines.
+#  Ici : une cellule de cinq notes, et rien que ses permutations.
+# ================================================================
+racines@symetrie:  1 2 3 4 5 | pluck 0.5 | oct 4 | gain 0.13 | hue 120
+permut@symetrie:   1 2 3 4 5 | rot 2 | iter 1 | pulse | lp 2400 | gain 0.1 | pan 0.5 | hue 160
+miroir@symetrie:   1 2 3 4 5 | invert | jux rev | sine | gain 0.09 | pan -0.5 | hue 280
+insoluble@symetrie: . . . . x | sample metal | gain 0.16 | reverb 0.4 | hue 0
+grave@symetrie:    1 . . . . | saw | oct 2 | lp 500 q 6 | sub 0.4 | gain 0.14 | hue 340
+
+# ================================================================
+#  IV — LES SEPT PONTS
+#  Königsberg, 1736 : peut-on traverser les sept ponts une fois chacun
+#  et une seule ? Euler répond non, et invente au passage la théorie
+#  des graphes. La réponse tient au degré des sommets, pas à l'essai.
+#  Ici : sept frappes réparties, et une marche qui n'aboutit jamais.
+# ================================================================
+ponts@ponts:     e(7,16) | sample wood | gain 0.2 | hue 30
+marche@ponts:    walk(8) | reed | oct 3 | gain 0.12 | reverb 0.3 | hue 200
+rives@ponts:     x . . . x . . x . . x . . . x . | sample rim | gain 0.15 | pan 0.3 | hue 90
+impair@ponts:    . . x . . . . . . . . . x . . . | sample cp | gain 0.18 | hue 350
+basse@ponts:     1 . 5, . 1 . 4, . | saw | oct 2 | slide | lp 700 q 5 | drive 0.25 | gain 0.15 | hue 340
+
+# ================================================================
+#  V — LA MARGE
+#  « J'ai découvert une démonstration merveilleuse de cette proposition,
+#  mais cette marge est trop étroite pour la contenir. » Fermat, 1637.
+#  Il faudra attendre Wiles en 1994. Trois cent cinquante-huit ans.
+#  Ici : trois voix — x, y, z — cherchent l'accord et ne l'obtiennent
+#  qu'à la toute fin du mouvement.
+# ================================================================
+x@marge:      1 _ _ _ 1 _ _ _ | bow | oct 3 | gain 0.12 | reverb 0.45 | hue 10
+y@marge:      4 _ _ _ 4 _ _ _ | bow | oct 3 | gain 0.11 | pan -0.4 | reverb 0.45 | hue 140
+z@marge:      7b _ _ _ 7b _ _ _ | bow | oct 3 | gain 0.11 | pan 0.4 | reverb 0.45 | hue 260
+marge@marge:  . . . . . . . x | sample glass | gain 0.13 | reverb 0.6 | hue 50
+attente@marge: 1 . . . . . . . | sine | oct 2 | env 2 1 0.7 3 | gain 0.12 | hue 220
+
+# ================================================================
+#  VI — LE CONTINU
+#  Cantor : l'infini des réels est strictement plus grand que celui des
+#  entiers. Y a-t-il un infini entre les deux ? Gödel et Cohen ont
+#  répondu : la question est indécidable dans ZFC. Ni vraie, ni fausse.
+#  Ici : le rythme fractal de l'ensemble de Cantor, et une densité qui
+#  double sans jamais remplir.
+# ================================================================
+poussiere@continu: cantor(16) | sample hh | gain 0.15 | pan 0.2 | hue 190
+diagonale@continu: 1 2 4 8' | every 2 fast 2 | pluck 0.4 | oct 4 | gain 0.11 | hue 300
+tiers@continu:     x . . x . . x . . x . . x . . x | sample perc | gain 0.13 | hue 60
+denombrable@continu: 1 . . . 2 . . . 3 . . . 4 . . . | tri | oct 3 | gain 0.1 | pan -0.35 | hue 210
+continu@continu:   1 | sine | oct 2 | lfo pitch 0.13 0.5 | gain 0.13 | reverb 0.5 | hue 20
+
+# ================================================================
+#  VII — L'INCOMPLÉTUDE
+#  Gödel, 1931 : tout système assez riche contient un énoncé vrai qu'il
+#  ne peut pas démontrer. La preuve construit une phrase qui parle
+#  d'elle-même. Ici : une macro qui se rappelle elle-même, un canon
+#  décalé, et la règle 110 de Wolfram, aussi puissante qu'une machine.
+# ================================================================
+def phrase: 1 5 4 7b
+
+enonce@godel:   $phrase | pluck 0.55 | oct 4 | gain 0.13 | hue 280
+preuve@godel:   $phrase | off 3 | sine | gain 0.09 | pan 0.45 | reverb 0.4 | hue 320
+regle@godel:    ca(110,16) | sample bleep | gain 0.13 | pan -0.4 | hue 160
+boucle@godel:   $phrase | rev | reed | oct 3 | gain 0.1 | hue 200
+indemontrable@godel: . . . . . . . . . . . . . . . x | sample metal | gain 0.15 | reverb 0.55 | hue 0
+
+# ================================================================
+#  VIII — L'ARRÊT
+#  Turing, 1936 : aucun programme ne peut décider, pour tout programme,
+#  s'il finira par s'arrêter. Le cas concret le plus simple tient en une
+#  ligne : la suite de Collatz. On la teste depuis quatre-vingts ans,
+#  personne ne sait prouver qu'elle retombe toujours sur 1.
+#  Ici : le rythme EST Collatz. Et rien ne dit qu'il s'arrête.
+# ================================================================
+collatz@arret:  collatz(27) | sample kick909 | gain 0.3 | hue 0
+ruban@arret:    x x x x x x x x | sample hh | gain 0.11 | swing 54 | hue 180
+tete@arret:     1 . 1 . 1' . 1 . | saw | oct 2 | lp 900 q 8 | fenv 0.6 | drive 0.35 | gain 0.16 | hue 340
+etat@arret:     bin(27) | sample bleep | gain 0.12 | pan 0.4 | hue 60
+indecidable@arret: . . . . . . . . | sine | gain 0
+
+# ================================================================
+#  IX — LES PREMIERS
+#  Riemann, 1859. Tous les zéros non triviaux de zêta sont-ils sur la
+#  droite de partie réelle 1/2 ? De la réponse dépend la façon dont les
+#  nombres premiers se répartissent. Ouvert. Un million de dollars.
+#  Ici : les frappes tombent sur les positions premières.
+# ================================================================
+premiers@premiers:  prime(32) | bell | oct 4 | gain 0.13 | reverb 0.45 | hue 50
+zeta@premiers:      1 _ _ 5 _ _ 3 _ | bow | oct 3 | gain 0.12 | reverb 0.5 | hue 210
+critique@premiers:  x . . . . . . . | sample bd | gain 0.26 | hue 0
+ecart@premiers:     recaman(12) | pluck 0.45 | oct 4 | gain 0.1 | pan -0.4 | hue 300
+bourdon@premiers:   1 ; 5 | sine | oct 2 | env 2 1 0.8 3 | lp 1200 | gain 0.12 | hue 20
+
+# ================================================================
+#  X — CHERCHER, VÉRIFIER
+#  P vs NP, 1971. Si l'on reconnaît une solution en un clin d'œil,
+#  peut-on aussi la trouver vite ? Personne ne le sait. C'est la
+#  question ouverte la plus lourde de l'informatique.
+#  Ici : une voix CHERCHE, au hasard, longtemps. Une autre porte le
+#  thème : dès qu'il tombe, on le reconnaît. Trouver est dur.
+#  Vérifier est immédiat. Tout le problème est là.
+# ================================================================
+cherche@chercher:  walk(16) | pulse | oct 4 | lp 2600 | gain 0.1 | pan -0.45 | hue 190
+verifie@chercher:  1 5 1' 5 | every 4 rot 1 | pluck 0.6 | oct 4 | gain 0.14 | hue 60
+essais@chercher:   x?70 x?70 x?70 x?70 x?70 x?70 x?70 x?70 | sample hh | gain 0.1 | hue 220
+certitude@chercher: . . . . . . . x | sample cp | gain 0.17 | reverb 0.35 | hue 340
+moteur@chercher:   1 . . 1 . . 1 . | saw | oct 2 | sub 0.5 | lp 800 q 4 | gain 0.15 | hue 0
